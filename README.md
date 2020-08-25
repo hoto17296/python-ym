@@ -3,6 +3,11 @@ Data type that handles year and month values.
 
 ## Usage
 
+### Import
+```
+from ym import ym
+```
+
 ### Initialize
 from year, month
 
