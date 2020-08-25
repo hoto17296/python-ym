@@ -1,6 +1,8 @@
 # ym
 Data type that handles year and month values.
 
+[![Build Status](https://travis-ci.org/hoto17296/python-ym.svg)](https://travis-ci.org/hoto17296/python-ym)
+
 ## Usage
 
 ### Import
