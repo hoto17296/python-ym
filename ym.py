@@ -39,8 +39,11 @@ class ym:
         return self.x % 12 + 1
 
     def to(self, *args) -> list:
-        target = self.__class__(*args)
-        return [self + i for i in range(target - self)] if self < target else []
+        def generator(target):
+            for i in range(target - self):
+                yield self + i
+
+        return generator(self.__class__(*args))
 
     def __repr__(self):
         cls = self.__class__

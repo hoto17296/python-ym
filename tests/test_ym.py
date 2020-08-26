@@ -35,4 +35,5 @@ class TestYm(TestCase):
         self.assertEqual(str(ym(2020, 4)), "2020-04")
 
     def testTo(self):
-        self.assertListEqual(ym(2020, 4).to(2020, 7), [ym(2020, 4), ym(2020, 5), ym(2020, 6)])
+        self.assertListEqual(list(ym(2020, 4).to(2020, 7)), [ym(2020, 4), ym(2020, 5), ym(2020, 6)])
+        self.assertListEqual(list(ym(2020, 4).to(2020, 3)), [])
