@@ -38,12 +38,10 @@ class ym:
     def m(self) -> int:
         return self.x % 12 + 1
 
-    def to(self, *args) -> list:
-        def generator(target):
-            for i in range(target - self):
-                yield self + i
-
-        return generator(self.__class__(*args))
+    def to(self, *args):
+        target = self.__class__(*args)
+        for i in range(target - self):
+            yield self + i
 
     def __repr__(self):
         cls = self.__class__
