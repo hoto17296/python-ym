@@ -43,6 +43,9 @@ class ym:
         for i in range(target - self):
             yield self + i
 
+    def __hash__(self):
+        return self.x
+
     def __repr__(self):
         cls = self.__class__
         return f"{cls.__name__}({self.y}, {self.m})"
@@ -59,18 +62,36 @@ class ym:
     def __sub__(self, other):
         if type(other) is int:
             return self + (-1 * other)
-        if type(other) is self.__class__:
-            return self.x - other.x
-        raise TypeError()
+        if type(other) is not self.__class__:
+            try:
+                other = self.__class__(other)
+            except ValueError:
+                raise TypeError()
+        return self.x - other.x
 
     def __eq__(self, other):
+        if type(other) is not self.__class__:
+            try:
+                other = self.__class__(other)
+            except ValueError:
+                return False
         return self.x == other.x
 
     def __ne__(self, other):
-        return self.x != other.x
+        return not (self == other)
 
     def __lt__(self, other):
+        if type(other) is not self.__class__:
+            try:
+                other = self.__class__(other)
+            except ValueError:
+                return False
         return self.x < other.x
 
     def __gt__(self, other):
+        if type(other) is not self.__class__:
+            try:
+                other = self.__class__(other)
+            except ValueError:
+                return False
         return self.x > other.x

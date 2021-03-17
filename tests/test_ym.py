@@ -26,10 +26,15 @@ class TestYm(TestCase):
         self.assertEqual(ym(2020, 4) + 10, ym(2021, 2))
         self.assertEqual(ym(2020, 4) - 10, ym(2019, 6))
         self.assertEqual(ym(2020, 4) - ym(2019, 6), 10)
+        self.assertEqual(ym(2020, 4) - "2019-06", 10)
         self.assertTrue(ym(2020, 4) > ym(2020, 3))
+        self.assertTrue(ym(2020, 4) > "2020-03")
         self.assertFalse(ym(2020, 4) < ym(2020, 3))
+        self.assertFalse(ym(2020, 4) < "2020-03")
         self.assertTrue(ym(2020, 4) == ym(2020, 4))
+        self.assertTrue(ym(2020, 4) == "2020-04")
         self.assertFalse(ym(2020, 4) == ym(2020, 3))
+        self.assertFalse(ym(2020, 4) == "2020-03")
 
     def testStr(self):
         self.assertEqual(str(ym(2020, 4)), "2020-04")
