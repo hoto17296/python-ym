@@ -95,3 +95,19 @@ class ym:
             except ValueError:
                 return False
         return self.x > other.x
+
+    def __le__(self, other):
+        if type(other) is not self.__class__:
+            try:
+                other = self.__class__(other)
+            except ValueError:
+                return False
+        return self.x <= other.x
+
+    def __ge__(self, other):
+        if type(other) is not self.__class__:
+            try:
+                other = self.__class__(other)
+            except ValueError:
+                return False
+        return self.x >= other.x
